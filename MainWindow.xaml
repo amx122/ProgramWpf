@@ -1,0 +1,159 @@
+﻿<Window x:Class="WPFModernVerticalMenu.MainWindow"
+        xmlns:ctls="clr-namespace:WPFModernVerticalMenu.Controls" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFModernVerticalMenu"
+        mc:Ignorable="d" Name="home"
+        Title="MainWindow" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True"
+        ResizeMode="NoResize" FontFamily="Program">
+
+        <!-- By Jeyderht 
+        Subscribe: https://www.youtube.com/channel/UC9di50E_9m9pQcZPxzFqYUA/about
+        -->
+    <Border Background="{DynamicResource PrimaryBackgroundColor}"
+            CornerRadius="8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="{DynamicResource SecundaryBackgroundColor}"
+                    CornerRadius="8 0 0 8">
+                <Grid x:Name="GridNav" Width="60">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+
+                    <Grid Grid.Row="0">
+                        <Border 
+                              Margin="14 0 0 0"
+                              Width="32" Height="24"
+                              HorizontalAlignment="Left">
+                            <Border.Background>
+                                <ImageBrush ImageSource="Resources/logo.png" Stretch="Uniform"/>
+                            </Border.Background>
+                        </Border>
+                        
+                        <Label Content="Program"
+                               Foreground="{DynamicResource PrimaryTextColor}"
+                               FontWeight="Bold"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="60 0 0 0"/>
+                    </Grid>
+                    
+
+                    <!-- Start: MenuItem -->
+                    <StackPanel Grid.Row="1" Margin="-1 40 0 20">
+                        <Button x:Name="Home" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave" Click="Home_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource home}" IconWidth="16" Text="Головна" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Dashboard" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Dashboard_MouseEnter" MouseLeave="Dashboard_MouseLeave" Click="Dashboard_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="Приладова панель" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Ai" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Ai_MouseEnter" MouseLeave="Ai_MouseLeave" Click="Ai_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource ai}" IconWidth="16" Text="Помічник " VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Chat" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Chat_MouseEnter" MouseLeave="Chat_MouseLeave" Click="Chat_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource chat}" IconWidth="16" Text="Чат" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Map" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Map_MouseEnter" MouseLeave="Map_MouseLeave" Click="Map_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource map}" IconWidth="16" Text="Карта" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Music" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Music_MouseEnter" MouseLeave="Music_MouseLeave" Click="Music_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource music}" IconWidth="16" Text="Музика" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Download" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Download_MouseEnter" MouseLeave="Download_MouseLeave" Click="Download_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource download}" IconWidth="16" Text="Завантажити" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Security" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Security_MouseEnter" MouseLeave="Security_MouseLeave" Click="Security_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource security}" IconWidth="16" Text="Безпека" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="Setting" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="Setting_MouseEnter" MouseLeave="Setting_MouseLeave" Click="Settings_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource settings}" IconWidth="16" Text="Setting" VerticalAlignment="Center"/>
+                        </Button>
+                    </StackPanel>
+                    <!-- End: MenuItem -->
+                    
+                    <!-- Start: Popup User Control -->
+                    <Popup x:Name="Popup"  AllowsTransparency="True"  HorizontalOffset="0" VerticalOffset="10">
+                        <ctls:UserPopup x:Name="Header" Foreground="{DynamicResource PrimaryTextColor}"/>
+                    </Popup>
+                    <!-- End: Popup User Control -->
+                    
+                </Grid>
+            </Border>
+            
+            <Grid Grid.Column="1" AllowDrop="True">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <ToggleButton x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center"  Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="10,15,0,15" Height="30" Width="30">
+                    <ToggleButton.Triggers>
+                        <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="HideStackPanel">
+                                    <DoubleAnimation Storyboard.TargetName="GridNav"  Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="210" To="60" Duration="0:0:0.5">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ToggleButton.Checked">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="ShowStackPanel">
+                                    <DoubleAnimation Storyboard.TargetName="GridNav" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="60" To="210" Duration="0:0:0.5">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ToggleButton.Triggers>
+                </ToggleButton>
+
+                <!-- Start: Button Close | Restore | Minimize -->
+                <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.RowSpan="2">
+                    <Button x:Name="Close" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="Close_Click" Tag="IsCloseButton"/>
+                    <Button x:Name="Restore" Margin="5,0" Click="Restore_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButtonsStyle}">
+                                <Setter Property="Content" Value="{DynamicResource maximize}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=home, Path=WindowState}" Value="Maximized">
+                                        <Setter Property="Content" Value="{DynamicResource restore}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="Minimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="Minimize_Click"/>
+                </StackPanel>
+                <!-- End: Button Close | Restore | Minimize -->
+                
+                <Frame Grid.Row="1"
+                       Name="fContainer"
+                       Margin="20"
+                       NavigationUIVisibility="Hidden" AllowDrop="True" Navigated="fContainer_Navigated_1">
+                    <Frame.Background>
+                        <ImageBrush ImageSource="/img_background.png"/>
+                    </Frame.Background>
+                </Frame>
+
+            </Grid>
+            
+      
+
+
+        </Grid>
+
+    </Border>
+</Window>
